@@ -10,7 +10,7 @@ resetButton.addEventListener("click", reset);
 
 
 function increase() {
-    let i = 0;
+    let i = parseInt(increaseD.innerHTML);
     i++;
 
     increaseD.innerHTML = i;
@@ -18,7 +18,7 @@ function increase() {
 }
 
 function decrease() {
-    let i = 0;
+    let i = parseInt(decreaseD.innerHTML);
     i--;
 
     decreaseD.innerHTML = i;
