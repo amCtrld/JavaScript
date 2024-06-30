@@ -1,8 +1,7 @@
 # A simple counter that changes color for positive nad negative numbers
 
-## Key concepts covered
+## Key concepts covered- document.querySelectorAll()
 
-- document.querySelectorAll()
 - forEach()
 - addEventListener()
 - currentTarget property
