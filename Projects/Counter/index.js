@@ -5,17 +5,35 @@ document.addEventListener('DOMContentLoaded', function() {
     header.classList.add('w3-center');
     document.body.appendChild(header);
   
-    // Create count display
-    const countHolder = document.createElement("p");
-    countHolder.id = "countContainer";
-    countHolder.textContent = "Count: ";
-    countHolder.classList.add('w3-center');
-    document.body.appendChild(countHolder);
+    // Counter object
+    const counter = {
+      count: 0,
+      element: document.createElement("span"),
+      display: document.createElement("p"),
+      updateDisplay: function() {
+        this.display.textContent = `Count: ${this.count}`;
+      },
+      increase: function() {
+        this.count++;
+        this.updateDisplay();
+      },
+      decrease: function() {
+        this.count--;
+        this.updateDisplay();
+      },
+      reset: function() {
+        this.count = 0;
+        this.updateDisplay();
+      }
+    };
   
-    const count = document.createElement("span");
-    count.id = "count";
-    count.textContent = 0;
-    countHolder.appendChild(count);
+    // Initialize counter display
+    counter.element.id = "count";
+    counter.element.textContent = counter.count;
+    counter.display.id = "countContainer";
+    counter.display.classList.add('w3-center');
+    counter.display.appendChild(counter.element);
+    document.body.appendChild(counter.display);
   
     // Create buttons
     function createButton(text, className, icon, onClick) {
@@ -32,45 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
       return button;
     }
   
-    const addButton = createButton("Add", 'w3-green', 'add', increase);
-    const minusButton = createButton("Minus", 'w3-red', 'remove', decrease);
-    const resetButton = createButton("Reset", 'w3-yellow', 'refresh', reset);
+    const addButton = createButton("Add", 'w3-green', 'add', counter.increase.bind(counter));
+    const minusButton = createButton("Minus", 'w3-red', 'remove', counter.decrease.bind(counter));
+    const resetButton = createButton("Reset", 'w3-yellow', 'refresh', counter.reset.bind(counter));
   
     // Create housing container
     const housingContainer = document.createElement("div");
     housingContainer.classList.add('w3-container', 'w3-center');
-    housingContainer.appendChild(countHolder);
+    housingContainer.appendChild(counter.display);
     housingContainer.appendChild(minusButton);
     housingContainer.appendChild(resetButton);
     housingContainer.appendChild(addButton);
     document.body.appendChild(housingContainer);
   
-    // Get elements
-    const increaseD = document.getElementById("count");
-    const decreaseD = document.getElementById("count");
-  
-    // Event listeners
-    increaseD.addEventListener("click", increase);
-    decreaseD.addEventListener("click", decrease);
-    resetButton.addEventListener("click", reset);
-  
-    // Functions
-    function increase() {
-      let i = parseInt(increaseD.textContent);
-      i++;
-      increaseD.textContent = i;
-      console.log(i);
-    }
-  
-    function decrease() {
-      let i = parseInt(decreaseD.textContent);
-      i--;
-      decreaseD.textContent = i;
-      console.log(i);
-    }
-  
-    function reset() {
-      increaseD.textContent = 0;
-    }
+    // Initial display update
+    counter.updateDisplay();
   });
   
