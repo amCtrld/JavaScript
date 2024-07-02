@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateReviewButton = document.getElementById('generate-review');
 
     function displayReview(review) {
+        reviewContainer.innerHTML = '';
         const reviewElement = document.createElement('div');
         reviewElement.classList.add('review');
         reviewElement.innerHTML = `
