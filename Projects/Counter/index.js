@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const minusButton = createButton("Minus", 'w3-red', 'remove', counter.decrease.bind(counter));
     const resetButton = createButton("Reset", 'w3-yellow', 'refresh', counter.reset.bind(counter));
   
-    // Create housing container
+    // Create container
     const housingContainer = document.createElement("div");
     housingContainer.classList.add('w3-container', 'w3-center');
     housingContainer.appendChild(counter.display);
