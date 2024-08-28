@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     header.classList.add('w3-center');
     document.body.appendChild(header);
   
-    // Create counter object
+    // Create the counter object
     const counter = {
       count: 0,
       element: document.createElement("span"),
