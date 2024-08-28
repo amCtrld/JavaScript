@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
   
-    // Initialize counter display
+    // Initialize the counter display
     counter.element.id = "count";
     counter.element.textContent = counter.count;
     counter.display.id = "countContainer";
